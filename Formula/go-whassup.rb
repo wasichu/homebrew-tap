@@ -1,8 +1,8 @@
 class GoWhassup < Formula
   desc "WhatsApp client for the terminal"
   homepage "https://github.com/wasichu/go-whassup"
-  url "https://github.com/wasichu/go-whassup/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "7430220447caff3e02dc4773ab8fb775224319e95404a4d24f2e388d013bffc8"
+  url "https://github.com/wasichu/go-whassup/archive/refs/tags/v0.2.2.tar.gz"
+  sha256 "d851b8116287d6a67f70d77b51702d50e1764c6584499b39a0d336de8bed2ddb"
   license "MPL-2.0"
   head "https://github.com/wasichu/go-whassup.git", branch: "main"
 
