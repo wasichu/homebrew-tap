@@ -1,7 +1,8 @@
 class CiBookTracker < Formula
   desc "Local-first reading tracker for language learners"
   homepage "https://github.com/wasichu/ci-book-tracker"
-  version "0.1.0"
+  url "https://github.com/wasichu/ci-book-tracker/releases/download/v0.1.0/ci-book-tracker-0.1.0-linux-x86_64.tar.gz"
+  sha256 "91c8937726e434d794b8503e9db2692f4d3ab6d63754175826e5649e8b315a37"
   license "MIT"
 
   on_macos do
@@ -21,11 +22,6 @@ class CiBookTracker < Formula
 
   on_linux do
     depends_on arch: :x86_64
-
-    on_intel do
-      url "https://github.com/wasichu/ci-book-tracker/releases/download/v0.1.0/ci-book-tracker-0.1.0-linux-x86_64.tar.gz"
-      sha256 "91c8937726e434d794b8503e9db2692f4d3ab6d63754175826e5649e8b315a37"
-    end
   end
 
   def install
