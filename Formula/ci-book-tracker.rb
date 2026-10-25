@@ -1,8 +1,8 @@
 class CiBookTracker < Formula
   desc "Local-first reading tracker for language learners"
   homepage "https://github.com/wasichu/ci-book-tracker"
-  url "https://github.com/wasichu/ci-book-tracker/releases/download/v0.1.0/ci-book-tracker-0.1.0-linux-x86_64.tar.gz"
-  sha256 "91c8937726e434d794b8503e9db2692f4d3ab6d63754175826e5649e8b315a37"
+  url "https://github.com/wasichu/ci-book-tracker/releases/download/v0.2.0/ci-book-tracker-0.2.0-linux-x86_64.tar.gz"
+  sha256 "4d31314fc3582f1e6af97d48fea96ebdf0f3a82764ea4a0e2cc47584e2ced8bb"
   license "MIT"
 
   on_macos do
@@ -11,12 +11,12 @@ class CiBookTracker < Formula
     depends_on "openssl@3"
 
     on_arm do
-      url "https://github.com/wasichu/ci-book-tracker/releases/download/v0.1.0/ci-book-tracker-0.1.0-macos-arm64.tar.gz"
-      sha256 "ec4548c8f554dfa965053dfa29fe435a5c554619288fa9ecebbb17bfc815169a"
+      url "https://github.com/wasichu/ci-book-tracker/releases/download/v0.2.0/ci-book-tracker-0.2.0-macos-arm64.tar.gz"
+      sha256 "e00cb91d8399c884ebcc884cbd066f087af5beb7e09cf34c9fe8aa87ba340f8d"
     end
     on_intel do
-      url "https://github.com/wasichu/ci-book-tracker/releases/download/v0.1.0/ci-book-tracker-0.1.0-macos-x86_64.tar.gz"
-      sha256 "62533a6e4cd3756b01350d36c631535ccfd472eb8fe06cb7df2b99330efe6736"
+      url "https://github.com/wasichu/ci-book-tracker/releases/download/v0.2.0/ci-book-tracker-0.2.0-macos-x86_64.tar.gz"
+      sha256 "7fac87b71af3c5c86b000794a3310ae53e8a0276b5c16a7e160d9bc09610db6f"
     end
   end
 
