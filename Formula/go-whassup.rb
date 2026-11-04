@@ -6,6 +6,12 @@ class GoWhassup < Formula
   license "MPL-2.0"
   head "https://github.com/wasichu/go-whassup.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/wasichu/homebrew-tap/releases/download/go-whassup-0.4.0"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "c07ab755b2700d9a5b0d9447071041903e5e0576aae870a5288b430c8bb8a382"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "1f88e1f05d5b10f5ba500b1f39dda39d1f99938350ab79aa5d202415d09ad45e"
+  end
+
   depends_on "go" => :build
 
   def install
