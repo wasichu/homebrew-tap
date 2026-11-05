@@ -1,5 +1,7 @@
 # brew tap-new uses this file to generate a bottle publish workflow for the new tap
 name: brew pr-pull
+run-name: "Homebrew PR #${{ inputs.pull_request }} (${{ inputs.head_sha }})"
+concurrency: publish-bottles
 
 on:
   workflow_dispatch:

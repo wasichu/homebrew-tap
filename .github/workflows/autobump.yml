@@ -1,15 +1,18 @@
 # brew tap-new uses this file to generate an autobump workflow for the new tap
 name: brew bump
 
+concurrency: brew-bump
+
 on:
   push:
     branches:
       - main
     paths:
       - .github/workflows/autobump.yml
+  workflow_dispatch:
   schedule:
-    # Every day at 21:45 UTC
-    - cron: 45 21 * * *
+    # Discover published releases hourly; GitHub may delay scheduled jobs.
+    - cron: "17 * * * *"
 
 permissions: {}
 
@@ -20,9 +23,11 @@ defaults:
 jobs:
   autobump:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     permissions:
       contents: write
       pull-requests: write
+      actions: write # dispatch checks and the exact-SHA bottle publisher
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
@@ -39,3 +44,14 @@ jobs:
           HOMEBREW_GIT_COMMITTER_EMAIL: ${{ steps.git_setup.outputs.email }}
           TAP_NAME: ${{ steps.set-up-homebrew.outputs.tap-name }}
         run: brew bump --no-fork --open-pr --formulae --bump-synced --tap="$TAP_NAME"
+
+      - name: Check release policy
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+
+      - name: Validate and publish the go-whassup release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
+          HOMEBREW_GIT_COMMITTER_NAME: ${{ steps.git_setup.outputs.name }}
+          HOMEBREW_GIT_COMMITTER_EMAIL: ${{ steps.git_setup.outputs.email }}
+        run: python3 scripts/publish-go-whassup.py

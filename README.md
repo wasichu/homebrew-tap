@@ -35,3 +35,22 @@ brew "<formula>"
 ## Documentation
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+
+## go-whassup release automation
+
+The hourly `brew bump` workflow discovers formula updates. For go-whassup only,
+`scripts/publish-go-whassup.py` completes the handoff for a published stable
+GitHub release: it checks the bot PR's exact formula diff/source checksum,
+dispatches `tests.yml` on the expected commit, then runs `publish.yml` after
+successful builds. No extra cross-repository token is needed. Other formulae
+and general PRs retain manual review.
+
+Run the release policy checks locally:
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_*.py'
+```
+
+Failed checks or changed commits stop publication. Inspect/rerun the failed job
+before retrying the hourly workflow. Manual `brew pr-pull` publishing remains
+available through `publish.yml`; pass the expected PR head SHA.
